@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Covid Tracker </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="india">Home</a></li>
+        <li><a href="india/analytics">Analytics</a></li>
+    </ul>
+<h1> Covid Tracker Dashboard </h1>
+<p> This application lists down the covid data state wise </p>
+
+<div class="jumbotron bg-warning">
+    <h1 class="display-4" th:text="${country.totalCasesSoFar}"></h1>
+    <p class="lead"> Total cases reported as of today</p>
+    <h1 class="display-4" th:text="${country.totalRecoveredSoFar}"></h1>
+    <p class="lead"> Number of patients recovered so far</p>
+</div>
+
+<table class="table table-hover .table-bordered table-success table-striped">
+    <tr class="table-dark">
+        <th>State</th>
+        <th>Cases</th>
+        <th>Active</th>
+        <th>Recovered</th>
+        <th>Deaths</th>
+        <th>Today Cases</th>
+        <th>Today Recovered</th>
+    </tr>
+    <tr th:each="state : ${states}">
+        <td th:text="${state.state}"></td>
+        <td th:text="${state.cases}">0</td>
+        <td th:text="${state.active}">0</td>
+        <td th:text="${state.recovered}">0</td>
+        <td th:text="${state.deaths}">0</td>
+        <td th:text="${state.todayRecovered}">0</td>
+        <td th:text="${state.todayCases}">0</td>
+    </tr>
+</table>
+</div>
+
+</body>
+</html>
