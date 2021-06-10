@@ -27,6 +27,8 @@ public class State {
 
     private BigInteger todayCases;
 
+    private float recoveryRate;
+
     public State() {
     }
 
@@ -42,4 +44,11 @@ public class State {
         this.todayCases = todayCases;
     }
 
+    @Override
+    public String toString() {
+        return "State{" +
+                "state:'" + state +" , "+
+                "recoveryRate:'" + recoveryRate +
+                '}';
+    }
 }

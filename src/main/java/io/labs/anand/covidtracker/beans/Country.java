@@ -16,6 +16,8 @@ public class Country {
 
     private List<State> states;
 
+    private List<State> sortedStates;
+
     public Country() {
     }
 
