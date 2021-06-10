@@ -7,10 +7,52 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
+
 <body>
 
-<h1> Corona Spread Analytics Dashboard </h1>
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li><a href="india">Home</a></li>
+        <li class="active"><a href="analytics">Analytics</a></li>
+    </ul>
+    <h1> Corona Spread Analytics Dashboard </h1>
 
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+
+</div>
 </body>
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var activePercent = Number("[[${activePercent}]]");
+        var recoveredPercent = Number("[[${recoveredPercent}]]");
+        var deathsPercent = Number("[[${deathsPercent}]]");
+        console.log(activePercent);
+        console.log(typeof activePercent);
+
+        var data = google.visualization.arrayToDataTable([
+          [ {label: 'Case', id: 'case'},
+            {label: 'Count', id: 'count', type: 'number'} ],
+          ['Active Cases',activePercent],
+          ['Recovered So Far',recoveredPercent],
+          ['Death Toll',deathsPercent]
+        ]);
+
+        var options = {
+          title: 'Covid Count',
+          is3D:true,
+          colors: ['#b30ee0', '#36e00e', '#e00e0e']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
 </html>

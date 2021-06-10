@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigInteger;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class CountryInfoService {
@@ -36,10 +38,6 @@ public class CountryInfoService {
 
         BigInteger totalCasesSoFar = country.getStates().stream().map(cases -> cases.getCases()).reduce(BigInteger.ZERO, (a,b)->a.add(b));
         BigInteger totalRecoveredSoFar = country.getStates().stream().map(recovered -> recovered.getRecovered()).reduce(BigInteger.ZERO,(a,b)->a.add(b));
-        country.setTotalCasesSoFar(totalCasesSoFar);
-        country.setTotalRecoveredSoFar(totalRecoveredSoFar);
-
-        System.out.println("Refreshing....");
 
         return country;
     }

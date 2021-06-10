@@ -16,10 +16,6 @@ public class Country {
 
     private List<State> states;
 
-    private BigInteger totalCasesSoFar;
-
-    private BigInteger totalRecoveredSoFar;
-
     public Country() {
     }
 

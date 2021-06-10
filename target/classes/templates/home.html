@@ -13,16 +13,18 @@
 <div class="container">
     <ul class="nav nav-tabs">
         <li class="active"><a href="india">Home</a></li>
-        <li><a href="india/analytics">Analytics</a></li>
+        <li><a href="analytics">Analytics</a></li>
     </ul>
 <h1> Covid Tracker Dashboard </h1>
 <p> This application lists down the covid data state wise </p>
 
 <div class="jumbotron bg-warning">
-    <h1 class="display-4" th:text="${country.totalCasesSoFar}"></h1>
+    <h1 class="display-4" th:text="${country.total.cases}"></h1>
     <p class="lead"> Total cases reported as of today</p>
-    <h1 class="display-4" th:text="${country.totalRecoveredSoFar}"></h1>
+    <h1 class="display-4" th:text="${country.total.recovered}"></h1>
     <p class="lead"> Number of patients recovered so far</p>
+    <br>
+    <p>Updating every 60 seconds .. </p>
 </div>
 
 <table class="table table-hover .table-bordered table-success table-striped">

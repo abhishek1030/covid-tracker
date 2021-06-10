@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.math.BigInteger;
+
 
 @Controller
 @RequestMapping("/covid-tracker")
@@ -27,9 +29,12 @@ public class CovidController {
         return "home";
     }
 
-    @GetMapping("/india/analytics")
+    @GetMapping("/analytics")
     public String getCountryAnalytics(Model model){
-
+        Country countryInfo = countryInfoService.getCountryInfo();
+        model.addAttribute("activePercent",countryInfo.getTotal().getActive());
+        model.addAttribute("recoveredPercent",countryInfo.getTotal().getRecovered());
+        model.addAttribute("deathsPercent",countryInfo.getTotal().getDeaths());
         return "covidAnalytics";
     }
 
