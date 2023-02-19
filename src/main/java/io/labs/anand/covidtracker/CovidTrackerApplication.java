@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableScheduling
 public class CovidTrackerApplication {
 
+	public String PORT = System.getenv("PORT");
 	public static void main(String[] args) {
 		SpringApplication.run(CovidTrackerApplication.class, args);
 	}
